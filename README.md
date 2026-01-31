@@ -54,5 +54,9 @@ gold                 | ID
 ===================================
 ```
 
+## Video explicando funcionamiento y respondiendo dudas del ejercicio
+https://youtu.be/BCVK9__Hh6E
+
+
 ## Autor
 - Joel Antonio Jaquez López #23369
