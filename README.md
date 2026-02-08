@@ -104,5 +104,38 @@ Si el código estuviera en japonés y sin espacios, la modificación principal s
 
 ---------------------------------------------------------------------------------------------
 
+
+
+
+
+
+# Generador Léxico (Método Directo)
+
+## Descripción del Problema:
+El objetivo de este problema fue implementar desde cero el Método Directo para la construcción de compiladores. Se requirió desarrollar un programa capaz de transformar una Expresión Regular (específicamente para Identificadores: `Letra(Letra|Digito)*`) en un Autómata Finito Determinista (DFA) funcional y optimizado.
+
+## Requerimientos Técnicos Implementados:
+
+1.  ### Procesamiento de Expresiones (Regex):
+    - Conversión de notación Infix a *Postfix* utilizando el algoritmo **Shunting Yard**.
+    - Manejo de operadores básicos: Concatenación (`.`), Unión (`|`) y Cerradura de Kleene (`*`).
+
+2.  ### Construcción del Árbol Sintáctico (AST):
+    - Creación de un árbol de nodos (`Star`, `Cat`, `Or`, `Position`).
+    - Cálculo automático de propiedades clave para cada nodo: `nullable`, `firstpos`, `lastpos` y `followpos`.
+
+3.  ### Generación y Visualización:
+    - Construcción de la tabla de transiciones del DFA basada en la tabla `followpos`.
+    - Minimización de Estados: Algoritmo de partición para optimizar el autómata.
+    - Generación de diagramas `.png` (Árbol y DFA) utilizando la librería Graphviz.
+
+4.  ### Simulación (Scanner):
+    - Validación del autómata mediante un escáner que lee un archivo de código fuente (Java) y clasifica los tokens encontrados como "Aceptados" (Identificadores) o "Rechazados" según las reglas del autómata generado.
+
+## Demostracion y Explicación
+- https://youtu.be/WWYBuPwUcQI
+
+---------------------------------------------------------------------------------------------
+
 ## Autor
 - Joel Antonio Jaquez López #23369
