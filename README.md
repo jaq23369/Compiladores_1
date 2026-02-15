@@ -137,5 +137,68 @@ El objetivo de este problema fue implementar desde cero el Método Directo para 
 
 ---------------------------------------------------------------------------------------------
 
+# Analizador Léxico Automatizado (Flex)
+## Descripción del Problema:
+En este laboratorio se hizo una implementación manual a una automatizada utilizando Flex (Fast Lexical Analyzer Generator). El objetivo fue construir un escáner altamente eficiente en lenguaje C, capaz de procesar una gramática técnica que incluye diversos formatos numéricos, cadenas con caracteres de escape y un manejo avanzado de comentarios mediante estados exclusivos.
+
+## Requerimientos Técnicos Implementados
+### Clasificación Avanzada de Tokens:
+
+- Identificadores: Reconocimiento de nombres que inician con letra o guion bajo, seguidos de caracteres alfanuméricos.
+
+- Literales Numéricos: Soporte para cuatro formatos distintos:
+
+- Enteros (42)
+
+- Punto flotante (3.14159)
+
+- Notación científica (1.6e-19)
+
+- Hexadecimales (0xFF)
+
+### Cadenas (Strings): Procesamiento de texto entre comillas dobles, con soporte para comillas escapadas (\") mediante la expresión regular \"(\\.|[^"\\])*\".
+
+### Manejo de Comentarios y Estados:
+
+- Comentarios de línea: Patrones que ignoran cualquier texto después de //.
+
+- Comentarios de bloque: Implementación de un Estado Exclusivo (%x MULTI_COMENTARIO) para ignorar secciones entre /* y */, permitiendo que el lexer procese correctamente bloques que abarcan múltiples líneas.
+
+- Limpieza de entrada: El analizador ignora automáticamente espacios en blanco, tabulaciones y saltos de línea para purificar la salida.
+
+- Resaltado de Sintaxis (Colorización ANSI):
+
+### Implementación de Códigos de Escape ANSI dentro de las rutinas de C para diferenciar visualmente los tokens en la terminal:
+
+- Verde: Strings (\033[0;32m).
+
+- Azul: Operadores (Aritméticos, Relacionales, Lógicos y Asignación).
+
+- Amarillo: Identificadores.
+
+- Magenta/Cian: Literales numéricos.
+
+- Rojo: Errores léxicos (caracteres no reconocidos).
+
+
+## Video explicativo:
+- https://youtu.be/3IPk8F0KSmM
+
+## Respuestas a los ejercicios
+
+7. Implementación de colores al estilo Visual Studio Code:
+    Para lograr el resaltado de sintaxis en la consola, se utilizaron Códigos de Escape ANSI, que son estándares definidos       por la organización ECMA en el estándar ECMA-48, específicamente en la sección 8.3.117 SGR - SELECT GRAPHIC RENDITION.       Estas secuencias comienzan con el carácter \033 porque es la representación octal del carácter ESCAPE (ASCII 27). Este       carácter actúa como un interruptor que indica a la terminal que los caracteres siguientes son instrucciones de formato y     no texto plano. Por ejemplo, la secuencia \033[0;34m limpia formatos previos (0) y activa el color azul (34). Al             finalizar cada token, se utiliza \033[0m para resetear la terminal a su estado original.
+
+    Referencia: ECMA International. (1991). Standard ECMA-48: Control Functions for Coded Character Sets (5th ed.).              Recuperado de https://www.ecma-international.org/publications-and-standards/standards/ecma-48/
+
+8. Herramienta similar: ANTLR
+   Una alternativa moderna es ANTLR (ANother Tool for Language Recognition). A diferencia de Flex, que solo genera el           analizador léxico, ANTLR es una herramienta unificada que genera tanto el lexer como el parser (analizador sintáctico) a     partir de un único archivo de gramática con extensión .g4.
+
+   ANTLR funciona bajo un potente algoritmo predictivo llamado LL(*) (Adaptive LL Star), que analiza la entrada de              izquierda a derecha tomando decisiones dinámicas sobre las reglas gramaticales. Es multi-lenguaje (Java, C#, Python, Go,     etc.) y ofrece herramientas visuales para inspeccionar el Árbol de Análisis Sintáctico (Parse Tree).
+
+   Referencia: Parr, T. (2013). The Definitive ANTLR 4 Reference. Pragmatic Bookshel
+
+---------------------------------------------------------------------------------------------
+
 ## Autor
 - Joel Antonio Jaquez López #23369
